@@ -1,8 +1,10 @@
+#pragma once
+
 #include <stdint.h>
 
 typedef struct{
-	uint8_t dst[6];
-	uint8_t src[6];
+	uint8_t dMAC[6];
+	uint8_t sMAC[6];
 	uint16_t type;
 }eth_hdr;
 
@@ -14,13 +16,13 @@ typedef struct{
 	uint8_t ttl;
 	uint8_t protocol;
 	uint16_t csum;
-	uint32_t src;
-	uint32_t dst;
+	uint32_t sIP;
+	uint32_t dIP;
 }ipv4_hdr;
 
 typedef struct{
-	uint16_t src;
-	uint16_t dst;
+	uint16_t sport;
+	uint16_t dport;
 	uint32_t seq;
 	uint32_t ack;
 	uint8_t off_res;
