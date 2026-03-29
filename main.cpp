@@ -54,11 +54,13 @@ int main(int argc, char* argv[]) {
 		uint8_t ihl = ((ip->v_ihl) & 0x0f) << 2;
 		if(ip->protocol != 6) continue;
 
-		tcp_hdr* tcp = (tcp_hdr*)(ip + ihl);
+		tcp_hdr* tcp = (tcp_hdr*)((uint8_t*)ip + ihl);
 		uint8_t thl = (((tcp->off_res) >> 4) & 0x0f) << 2;
-		uint8_t* data = tcp + thl;
 
-		print_info(eth, ip, tcp, data);
+		uint8_t* data = (uint8_t*)tcp + thl;
+		uint16_t data_len = (ntohs(ip->len) > ihl + thl) ? ntohs(ip->len) - ihl - thl : 0;
+
+		print_info(eth, ip, tcp, data, data_len);
         }
 
         pcap_close(pcap);
