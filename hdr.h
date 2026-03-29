@@ -18,4 +18,7 @@ typedef struct{
 typedef struct{
 	uint16_t src;
 	uint16_t dst;
+	uint32_t seq;
+	uint32_t ack;
+	uint8_t off_res;
 }tcp_hdr;
