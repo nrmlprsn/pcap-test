@@ -55,8 +55,10 @@ int main(int argc, char* argv[]) {
 		if(ip->protocol != 6) continue;
 
 		tcp_hdr* tcp = (tcp_hdr*)(ip + ihl);
+		uint8_t thl = (((tcp->off_res) >> 4) & 0x0f) << 2;
+		uint8_t* data = tcp + thl;
 
-		print_info(eth, ip, tcp);
+		print_info(eth, ip, tcp, data);
         }
 
         pcap_close(pcap);
