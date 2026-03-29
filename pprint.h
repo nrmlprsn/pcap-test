@@ -1,7 +1,8 @@
 #pragma once
 
+#include <string>
 #include "hdr.h"
 
-void mac_format(eth_hdr* eth);
-void ipv4_format(ipv4_hdr* ip);
+string mac_format(uint8_t* mac);
+string ipv4_format(uint32_t add);
 void print_info(eth_hdr* eth, ipv4_hdr* ip, tcp_hdr* tcp);
