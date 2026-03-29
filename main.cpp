@@ -1,7 +1,6 @@
 #include <pcap.h>
 #include <stdbool.h>
 #include <stdio.h>
-#include "hdr.h"
 #include "pprint.h"
 
 void usage() {
