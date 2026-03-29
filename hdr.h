@@ -8,7 +8,10 @@ typedef struct{
 
 typedef struct{
 	uint8_t v_ihl;
-	uint8_t a[8];
+	uint8_t dscp;
+	uint16_t len;
+	uint32_t id_frag;
+	uint8_t ttl;
 	uint8_t protocol;
 	uint16_t csum;
 	uint32_t src;
